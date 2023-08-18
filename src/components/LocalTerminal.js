@@ -1,6 +1,7 @@
 import {api as TerminalApi, Ask as TerminalAsk, Flash as TerminalFlash, Terminal} from "vue-web-terminal"
 import {exampleCode} from "@/demo/Demo";
 import {commands} from "@/components/LocalTerminalData";
+import {initWebSocket, sendWebsocket} from "@/common/websocket"
 
 export default {
     name: 'LocalTerminal',
@@ -63,20 +64,19 @@ export default {
                 content: 'Terminal initializing...'
             },
             {
-                content: "Welcome to vue-web-terminal! If you are using for the first time, you can use the <span class='t-cmd-key'>help</span> command to learn."
+                content: "Welcome to swow-debugger-terminal! If you are using for the first time, you can use the <span class='t-cmd-key'>help</span> command to learn."
             },
             {
                 type: 'html',
                 content: `
                 <div class='demo-init-box'>
-                    <p>Hello vue-web-terminal! ✋</p>
-                    <p>Demo version: vue2(<span class="t-cmd-key">${this.version.vue2}</span>), vue3(<span class="t-cmd-key">${this.version.vue3}</span>)</p>
-                    <p>⭐️Github: <a class='t-a' target='_blank' href='https://github.com/tzfun/vue-web-terminal'>https://github.com/tzfun/vue-web-terminal</a></p>
+                    <p>Hello swow-debugger-terminal! ✋</p>
                 </div>
                 `
             }
         ]
         this.cmdStore = this.cmdStore.concat(commands)
+        initWebSocket('wss://127.0.0.1:9764')
     },
     methods: {
         onActive(name) {
@@ -95,7 +95,102 @@ export default {
                 failed(`请按照引导输入命令 <span class="t-cmd-key">${this.guide.command}</span> 或输入 <span class="t-cmd-key">exit</span> 退出引导`)
                 return
             }
-            if (key === 'fail') {
+            if (key === 'ps') {
+                sendWebsocket('ps', function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'attach') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'vars') {
+                sendWebsocket('vars', function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'exec') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'co') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'bt') {
+                sendWebsocket('bt', function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'l') {
+                sendWebsocket('l', function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'p') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'z') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'kill') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            } else if (key === 'config') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'json',
+                        class: 'success',
+                        content: JSON.parse(data)
+                    })
+                })
+            }
+            else if (key === 'pool') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            }
+            else if (key === 'route') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'json',
+                        content: data
+                    })
+                })
+            }
+            else if (key === 'fail') {
                 failed('Something wrong!!!')
             } else if (key === 'json') {
                 //  do something here
@@ -103,7 +198,7 @@ export default {
                     type: 'json',
                     class: 'success',
                     content: {
-                        k1: 'welcome to vue-web-terminal',
+                        k1: 'welcome to swow-debugger-terminal',
                         k2: 120,
                         k3: ['h', 'e', 'l', 'l', 'o'],
                         k4: {k41: 2, k42: '200'}
@@ -114,7 +209,7 @@ export default {
                     type: 'code',
                     content: "import Vue from 'vue'\n" +
                         "import App from './App.vue'\n" +
-                        "import Terminal from 'vue-web-terminal'\n" +
+                        "import Terminal from swow-debugger-terminal\n" +
                         "import Highlight from './Highlight.js'\n" +
                         "\n" +
                         "Vue.use(Highlight)\n" +
@@ -148,7 +243,7 @@ export default {
                     type: 'html',
                     content: `
                             <div class='demo-init-box'>
-                                <p>Hello vue-web-terminal! ✋</p>
+                                <p>Hello 'swow-debugger-terminal'! ✋</p>
                                 <p>Demo version: vue2(<span class="t-cmd-key">${this.version.vue2}</span>), vue3(<span class="t-cmd-key">${this.version.vue3}</span>)</p>
                                 <p>⭐️Github: <a class='t-a' target='_blank' href='https://github.com/tzfun/vue-web-terminal'>https://github.com/tzfun/vue-web-terminal</a></p>
                             </div>
@@ -197,6 +292,7 @@ export default {
             } else if (key === 'list') {
                 let allClass = ['success', 'error', 'system', 'info', 'warning'];
                 allClass.forEach(clazz => {
+                    console.log(clazz, this.name)
                     TerminalApi.pushMessage(this.name, {
                         type: 'normal',
                         class: clazz,
@@ -419,7 +515,7 @@ export default {
             let terminalInfo = TerminalApi.elementInfo(this.name)
             let start = new Date().getTime()
             await this.mockLoading(flash, 'vue', terminalInfo)
-            await this.mockLoading(flash, 'vue-web-terminal', terminalInfo)
+            await this.mockLoading(flash, 'swow-debugger-terminal', terminalInfo)
             await this.mockLoading(flash, 'core.js', terminalInfo)
 
             let useTime = ((new Date().getTime() - start) / 1000).toFixed(2)

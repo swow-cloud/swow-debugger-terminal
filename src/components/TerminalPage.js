@@ -9,24 +9,16 @@ export default {
             terminals: {
                 default: {
                     show: false,
-                    name: 'vue-web-terminal [default]',
-                    context: '/vue-web-terminal/default',
-                    localInitCmd: null,
-                    showHeader: true,
-                    dragConf: null
-                },
-                fullscreen: {
-                    show: false,
-                    name: 'vue-web-terminal [fullscreen]',
-                    context: '/vue-web-terminal/fullscreen',
+                    name: 'swow-debugger-terminal [default]',
+                    context: '/swow-debugger-terminal/default',
                     localInitCmd: null,
                     showHeader: true,
                     dragConf: null
                 },
                 bottom: {
                     show: false,
-                    name: 'vue-web-terminal [bottom]',
-                    context: '/vue-web-terminal/bottom',
+                    name: 'swow-debugger-terminal [bottom]',
+                    context: '/swow-debugger-terminal/bottom',
                     localInitCmd: null,
                     showHeader: true,
                     dragConf: null
@@ -42,15 +34,13 @@ export default {
     },
     mounted() {
         let defaultTerminal
-        if (document.body.clientWidth > 960) {
-            this.showEditor = true
-            defaultTerminal = this.terminals.default
-        } else {
-            defaultTerminal = this.terminals.fullscreen
-            defaultTerminal.name = 'vue-web-terminal'
-            defaultTerminal.context = '/vue-web-terminal'
-            defaultTerminal.style = "position:fixed;"
-        }
+
+        defaultTerminal = this.terminals.default
+        defaultTerminal.name = 'swow-debugger-terminal'
+        defaultTerminal.context = '/swow-debugger-terminal'
+        defaultTerminal.style = "position:fixed;"
+
+        this.showEditor = true
         defaultTerminal.localInitCmd = this.initCmd
         defaultTerminal.dragConf = this.initWindowSize()
         defaultTerminal.show = true
@@ -80,7 +70,7 @@ export default {
             return dragConf
         },
         showDemo(type) {
-            for(let t in this.terminals) {
+            for (let t in this.terminals) {
                 if (t !== 'list') {
                     this.terminals[t].show = t === type
                 }
@@ -105,8 +95,8 @@ export default {
             }
             this.terminals.list.push({
                 show: true,
-                name: `vue-web-terminal [multi-${this.multiSeq}]`,
-                context: `/vue-web-terminal/multi-${this.multiSeq}`,
+                name: `swow-debugger-terminal [multi-${this.multiSeq}]`,
+                context: `/swow-debugger-terminal/multi-${this.multiSeq}`,
                 localInitCmd: null,
                 showHeader: true,
                 dragConf: {

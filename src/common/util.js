@@ -14,3 +14,7 @@ export function getQuery() {
 export function isEmpty(str) {
     return str == null || str.length === 0 || str.trim().length === 0
 }
+
+export function jsonDecode(str) {
+    return JSON.parse(str)
+}

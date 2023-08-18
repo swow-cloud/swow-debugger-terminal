@@ -2,38 +2,16 @@
   <div class="terminal-container">
     <div class="window-container">
       <div v-for="(item,key) in terminals" :key="key">
-        <div v-if="key === 'default' && item.show">
-          <LocalTerminal :name="item.name"
-                         :context="item.context"
-                         :init-cmd="item.localInitCmd"
-                         :show-header="item.showHeader"
-                         :drag-conf="item.dragConf"
-                         @on-active="onActive(key, $event)"
-                         @close="closeWindow(key, item.name)">
-          </LocalTerminal>
-        </div>
-        <div v-else-if="key === 'bottom' && item.show" class="bottom-container">
-          <LocalTerminal :name="item.name"
-                         :context="item.context"
-                         :init-cmd="item.localInitCmd"
-                         :show-header="item.showHeader"
-                         :drag-conf="item.dragConf"
-                         @on-active="onActive(key, $event)"
-                         @close="closeWindow(key, item.name)">
-          </LocalTerminal>
-        </div>
-        <div v-else-if="key === 'fullscreen' && item.show" class="fullscreen-container">
-          <LocalTerminal :name="item.name"
-                         :context="item.context"
-                         :init-cmd="item.localInitCmd"
-                         :show-header="item.showHeader"
-                         :drag-conf="item.dragConf"
-                         :style="item.style"
-                         @on-active="onActive(key, $event)"
-                         @close="closeWindow(key, item.name)"
-                         ref="fullscreenTerminal">
-          </LocalTerminal>
-        </div>
+          <div v-if="key === 'default' && item.show">
+              <LocalTerminal :name="item.name"
+                             :context="item.context"
+                             :init-cmd="item.localInitCmd"
+                             :show-header="item.showHeader"
+                             :drag-conf="item.dragConf"
+                             @on-active="onActive(key, $event)"
+                             @close="closeWindow(key, item.name)">
+              </LocalTerminal>
+          </div>
         <div v-else-if="item.length > 0">
           <div v-for="(it,k) in item" :key="k">
             <LocalTerminal v-show="it.show"
@@ -52,24 +30,16 @@
     <div class="editor-container" v-if="showEditor">
       <div class="editor-body">
         <div class="editor-icon">
-          <img style="width: 250px" :src="require('@/../public/logo.png')" alt="vue-web-terminal">
+          <img style="width: 250px" :src="require('@/../public/logo.png')" alt="swow-debugger-terminal">
           <div>
             <a href="https://github.com/tzfun/vue-web-terminal/tree/vue2"><img src="https://shields.io/github/package-json/v/tzfun/vue-web-terminal/vue2" alt="vue2"></a>
             <a href="https://github.com/tzfun/vue-web-terminal/tree/vue3-pioneer" style="margin-left: 15px;"><img src="https://shields.io/github/package-json/v/tzfun/vue-web-terminal/vue3-pioneer" alt="vue3"></a>
           </div>
         </div>
 
-        <div class="demo-btn" style="margin-top: 30px">
+        <div class="demo-btn">
           <button :class="'btn ' + (terminals.default.show ? 'active' :'btn-default')"
-                  @click="showDemo('default')">可拖拽示例</button>
-        </div>
-        <div class="demo-btn">
-          <button :class="'btn ' + (terminals.bottom.show ? 'active' :'btn-default')"
-                  @click="showDemo('bottom')">固定位置示例</button>
-        </div>
-        <div class="demo-btn">
-          <button :class="'btn ' + (terminals.fullscreen.show ? 'active' :'btn-default')"
-                  @click="showDemo('fullscreen')">全屏示例</button>
+                  @click="showDemo('default')">默认显示</button>
         </div>
         <div class="demo-btn">
           <button :class="'btn ' + (terminals.list.length > 0 ? 'active' :'btn-default')"

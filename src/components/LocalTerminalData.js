@@ -1,6 +1,102 @@
 
 export const commands = [
     {
+        "key": "ps",
+        "group": "demo",
+        "usage": 'info',
+        "description": "查看当前所有协程状态"
+    },
+    {
+        "key": "attach",
+        "group": "demo",
+        "usage": 'info',
+        "description": "进入协程"
+    },
+    {
+        "key": "exec",
+        "group": "demo",
+        "usage": 'info',
+        "description": "执行命令"
+    },
+    {
+        "key": "vars",
+        "group": "demo",
+        "usage": 'info',
+        "description": "查看变量"
+    },
+    {
+        "key": "bt",
+        "group": "demo",
+        "usage": 'info',
+        "description": "查看调用栈"
+    },
+    {
+        "key": "f",
+        "group": "demo",
+        "usage": 'info',
+        "description": "查栈帧"
+    },
+    {
+        "key": "b",
+        "group": "demo",
+        "usage": 'info',
+        "description": "打断点"
+    },
+    {
+        "key": "n",
+        "group": "demo",
+        "usage": 'info',
+        "description": "单步调试"
+    },
+    {
+        "key": "n",
+        "group": "demo",
+        "usage": 'info',
+        "description": "单步调试"
+    },
+    {
+        "key": "n",
+        "group": "demo",
+        "usage": 'info',
+        "description": "单步调试"
+    },
+    {
+        "key": "l",
+        "group": "demo",
+        "usage": 'info',
+        "description": "查看更多源码"
+    },
+    {
+        "key": "kill",
+        "group": "demo",
+        "usage": 'info',
+        "description": "杀死协程"
+    },
+    {
+        "key": "killall",
+        "group": "demo",
+        "usage": 'info',
+        "description": "杀死所有协程"
+    },
+    {
+        "key": "pool",
+        "group": "demo",
+        "usage": 'info',
+        "description": "查看mysql,redis连接池"
+    },
+    {
+        "key": "config",
+        "group": "demo",
+        "usage": 'info',
+        "description": "查看线上配置信息"
+    },
+    {
+        "key": "route",
+        "group": "demo",
+        "usage": 'info',
+        "description": "查看路由"
+    },
+    {
         "key": "fail",
         "group": "demo",
         "usage": 'fail',

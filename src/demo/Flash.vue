@@ -38,7 +38,7 @@ export default {
       await this.mockLoading(flash, 'vue', terminalInfo)
       await this.mockLoading(flash, 'echarts.js', terminalInfo)
       await this.mockLoading(flash, 'highlight.js', terminalInfo)
-      await this.mockLoading(flash, 'vue-web-terminal', terminalInfo)
+      await this.mockLoading(flash, 'swow-debugger-terminal', terminalInfo)
       await this.mockLoading(flash, 'vue-router', terminalInfo)
 
       let useTime = ((new Date().getTime() - startTime) / 1000).toFixed(2)
