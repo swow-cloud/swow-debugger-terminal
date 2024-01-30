@@ -2,10 +2,11 @@
   <div id="app">
     <div v-if="editMode">
       <terminal-page @close="editMode=false" :init-cmd="localInitCmd"></terminal-page>
+      <!-- <login-page></login-page> -->
     </div>
     <div v-else>
       <div>
-        <img :src="require('@/assert/logo.svg')" class="logo" alt="terminal-logo">
+        <img :src="require('@/asset/logo.svg')" class="logo" alt="terminal-logo">
         <h1 class="title">SDB</h1>
         <p class="des">一个轻量、功能强大可以与swow构建的server进行终端调试。</p>
 
@@ -20,6 +21,7 @@
 
 <script>
 import AppJs from './App.js'
+
 
 export default AppJs
 </script>
@@ -138,7 +140,6 @@ body, html, #app {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
   font-family: Menlo, Consolas, monospace;
   overflow: auto;
 }
