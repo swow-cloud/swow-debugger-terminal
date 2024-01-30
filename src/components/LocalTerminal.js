@@ -64,19 +64,19 @@ export default {
                 content: 'Terminal initializing...'
             },
             {
-                content: "Welcome to swow-debugger-terminal! If you are using for the first time, you can use the <span class='t-cmd-key'>help</span> command to learn."
+                content: "Welcome to SDB! If you are using for the first time, you can use the <span class='t-cmd-key'>help</span> command to learn."
             },
             {
                 type: 'html',
                 content: `
                 <div class='demo-init-box'>
-                    <p>Hello swow-debugger-terminal! ✋</p>
+                    <p>Hello SDB! 准备开始调试了吗? 🚀</p>
                 </div>
                 `
             }
         ]
         this.cmdStore = this.cmdStore.concat(commands)
-        initWebSocket('wss://127.0.0.1:9764')
+        initWebSocket('ws://127.0.0.1:9764')
     },
     methods: {
         onActive(name) {
@@ -198,7 +198,7 @@ export default {
                     type: 'json',
                     class: 'success',
                     content: {
-                        k1: 'welcome to swow-debugger-terminal',
+                        k1: 'welcome to SDB',
                         k2: 120,
                         k3: ['h', 'e', 'l', 'l', 'o'],
                         k4: {k41: 2, k42: '200'}
@@ -209,7 +209,7 @@ export default {
                     type: 'code',
                     content: "import Vue from 'vue'\n" +
                         "import App from './App.vue'\n" +
-                        "import Terminal from swow-debugger-terminal\n" +
+                        "import Terminal from SDB\n" +
                         "import Highlight from './Highlight.js'\n" +
                         "\n" +
                         "Vue.use(Highlight)\n" +
@@ -243,7 +243,7 @@ export default {
                     type: 'html',
                     content: `
                             <div class='demo-init-box'>
-                                <p>Hello 'swow-debugger-terminal'! ✋</p>
+                                <p>Hello 'SDB'! ✋</p>
                                 <p>Demo version: vue2(<span class="t-cmd-key">${this.version.vue2}</span>), vue3(<span class="t-cmd-key">${this.version.vue3}</span>)</p>
                                 <p>⭐️Github: <a class='t-a' target='_blank' href='https://github.com/tzfun/vue-web-terminal'>https://github.com/tzfun/vue-web-terminal</a></p>
                             </div>
@@ -515,7 +515,7 @@ export default {
             let terminalInfo = TerminalApi.elementInfo(this.name)
             let start = new Date().getTime()
             await this.mockLoading(flash, 'vue', terminalInfo)
-            await this.mockLoading(flash, 'swow-debugger-terminal', terminalInfo)
+            await this.mockLoading(flash, 'SDB', terminalInfo)
             await this.mockLoading(flash, 'core.js', terminalInfo)
 
             let useTime = ((new Date().getTime() - start) / 1000).toFixed(2)

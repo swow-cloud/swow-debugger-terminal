@@ -1,9 +1,11 @@
 import TerminalPage from "@/components/TerminalPage.vue";
 import {getQuery} from "@/common/util";
 
+import 'vue-web-terminal/lib/theme/dark.css'
+import 'element-ui/lib/theme-chalk/index.css';
 export default {
     name: 'App',
-    components: {TerminalPage},
+    components: {TerminalPage,Notification},
     data() {
         return {
             editMode: false,
@@ -18,7 +20,6 @@ export default {
         }
     },
     mounted() {
-
     },
     methods: {
 

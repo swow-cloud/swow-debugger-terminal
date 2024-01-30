@@ -9,16 +9,16 @@ export default {
             terminals: {
                 default: {
                     show: false,
-                    name: 'swow-debugger-terminal [default]',
-                    context: '/swow-debugger-terminal/default',
+                    name: 'SDB [default]',
+                    context: '/SDB/default',
                     localInitCmd: null,
                     showHeader: true,
                     dragConf: null
                 },
                 bottom: {
                     show: false,
-                    name: 'swow-debugger-terminal [bottom]',
-                    context: '/swow-debugger-terminal/bottom',
+                    name: 'SDB [bottom]',
+                    context: '/SDB/bottom',
                     localInitCmd: null,
                     showHeader: true,
                     dragConf: null
@@ -36,8 +36,8 @@ export default {
         let defaultTerminal
 
         defaultTerminal = this.terminals.default
-        defaultTerminal.name = 'swow-debugger-terminal'
-        defaultTerminal.context = '/swow-debugger-terminal'
+        defaultTerminal.name = 'SDB'
+        defaultTerminal.context = 'SDB'
         defaultTerminal.style = "position:fixed;"
 
         this.showEditor = true
@@ -95,8 +95,8 @@ export default {
             }
             this.terminals.list.push({
                 show: true,
-                name: `swow-debugger-terminal [multi-${this.multiSeq}]`,
-                context: `/swow-debugger-terminal/multi-${this.multiSeq}`,
+                name: `SDB [multi-${this.multiSeq}]`,
+                context: `/SDB/multi-${this.multiSeq}`,
                 localInitCmd: null,
                 showHeader: true,
                 dragConf: {

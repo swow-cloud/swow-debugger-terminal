@@ -6,7 +6,7 @@
     <div v-else>
       <div>
         <img :src="require('@/assert/logo.svg')" class="logo" alt="terminal-logo">
-        <h1 class="title">swow-debugger-terminal</h1>
+        <h1 class="title">SDB</h1>
         <p class="des">一个轻量、功能强大可以与swow构建的server进行终端调试。</p>
 
       </div>

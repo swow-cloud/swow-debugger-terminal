@@ -1,4 +1,5 @@
-import {api as TerminalApi} from "vue-web-terminal" ;
+import {api as TerminalApi} from "vue-web-terminal";
+import {Notification} from 'element-ui';
 
 let socket = "";
 let lockReconnect = false; //是否真正建立连接
@@ -27,6 +28,7 @@ export const closeWebsocket = function () {
 
 export const initWebSocket = function (url) {
     weburl = url;
+
     if (!window.WebSocket) {
         console.error({
             message: "您的浏览器不支持websocket,请升级或更换浏览器！",
@@ -91,12 +93,12 @@ function start() {
 function socketOnOpen() {
     socket.onopen = () => {
         console.log("socket连接成功");
-        TerminalApi.pushMessage('swow-debugger-terminal', {
-            type: 'normal',
-            class: 'success',
-            tag: 'success',
-            content: '服务端已连接'
-        })
+        Notification.success(
+            {
+                title: 'SDB🚀',
+                message: "服务端连接成功..."
+            }
+        )
         start();
     };
 }
@@ -104,12 +106,12 @@ function socketOnOpen() {
 function socketOnClose() {
     socket.onclose = () => {
         console.log("socket已经关闭");
-        TerminalApi.pushMessage('swow-debugger-terminal', {
-            type: 'normal',
-            class: 'error',
-            tag: 'error',
-            content: '服务端已断开'
-        })
+        Notification.error(
+            {
+                title: 'SDB🚀',
+                message: "服务端已断开..."
+            }
+        )
     };
 }
 
@@ -121,6 +123,12 @@ function socketOnSend(data) {
 function socketOnError() {
     socket.onerror = () => {
         reconnect();
+        Notification.error(
+            {
+                title: 'SDB🚀',
+                message: "服务端连接失败..."
+            }
+        )
         console.log("socket 链接失败");
     };
 }
@@ -129,11 +137,22 @@ function socketOnMessage() {
     socket.onmessage = (e) => {
         global_callback(e.data);
         reset();
-        global_callback = function (data){
-            TerminalApi.pushMessage('swow-debugger-terminal', {
+        global_callback = function (data) {
+            TerminalApi.pushMessage('SDB', {
                 type: 'ansi',
                 content: `${data}`
             })
         }
     };
+}
+
+export function socketState() {
+    if (socket.readyState === 3 || socket.readyState === 2) {
+        Notification.error(
+            {
+                title: 'SDB🚀',
+                message: "服务端连接已断开..."
+            }
+        )
+    }
 }
