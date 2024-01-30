@@ -2,7 +2,9 @@
   <div id="app">
     <div v-if="editMode">
       <terminal-page @close="editMode=false" :init-cmd="localInitCmd"></terminal-page>
-      <!-- <login-page></login-page> -->
+    </div>
+    <div v-else-if="toLogin">
+      <login-page></login-page>
     </div>
     <div v-else>
       <div>

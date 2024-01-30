@@ -14,7 +14,7 @@ body {
 }
 
 body::after {
-  content: "";
+  /* content: ""; */
   display: block;
   position: fixed;
   width: 100%;

@@ -4,8 +4,7 @@ import {getQuery} from "@/common/util";
 
 import 'vue-web-terminal/lib/theme/dark.css'
 import 'element-ui/lib/theme-chalk/index.css';
-// import '@/asset/style.css'
-// import '@/asset/style.scss'
+
 
 export default {
     name: 'App',
@@ -13,6 +12,7 @@ export default {
     data() {
         return {
             editMode: false,
+            toLogin: false,
             localInitCmd:null
         }
     },
@@ -24,6 +24,7 @@ export default {
         }
     },
     mounted() {
+        this.toLogin  = true
     },
     methods: {
 
