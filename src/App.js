@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 export default {
     name: 'App',
-    components: {TerminalPage,Notification,LoginPage},
+    components: {TerminalPage,LoginPage},
     data() {
         return {
             editMode: false,
@@ -27,6 +27,10 @@ export default {
         this.toLogin  = true
     },
     methods: {
-
+        updateToLogin(val) {
+            console.log(val)
+            // 更新父组件的数据
+            this.toLogin = val;
+        }
     }
 }

@@ -4,14 +4,13 @@
       <terminal-page @close="editMode=false" :init-cmd="localInitCmd"></terminal-page>
     </div>
     <div v-else-if="toLogin">
-      <login-page></login-page>
+      <login-page @update:login="updateToLogin"></login-page>
     </div>
     <div v-else>
       <div>
         <img :src="require('@/asset/logo.svg')" class="logo" alt="terminal-logo">
         <h1 class="title">SDB</h1>
         <p class="des">一个轻量、功能强大可以与swow构建的server进行终端调试。</p>
-
       </div>
       <div class="btn-box">
         <button v-show="!editMode" @click="editMode=true" class="btn btn-local">点击进入</button>

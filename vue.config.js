@@ -4,7 +4,7 @@ module.exports = {
     chainWebpack: config =>{
         config.plugin('html')
             .tap(args => {
-                args[0].title = 'vue-web-terminal在线体验'
+                args[0].title = 'SDB-WEB🚀 一款在线调试SWOW｜PHP的调试神器!'
                 return args
             })
     },
