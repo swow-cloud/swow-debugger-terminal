@@ -185,8 +185,11 @@ export default {
             else if (key === 'route') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'json',
-                        content: data
+                        type: 'table',
+                        content: {
+                            head: ['server', 'method', 'uri', 'action','middleware'],
+                            rows: JSON.parse(data)
+                        }
                     })
                 })
             }

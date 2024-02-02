@@ -11,7 +11,7 @@ export default {
     components: {TerminalPage,LoginPage},
     data() {
         return {
-            editMode: false,
+            editMode: true,
             toLogin: false,
             localInitCmd:null
         }

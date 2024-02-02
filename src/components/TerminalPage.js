@@ -1,4 +1,5 @@
 import LocalTerminal from "@/components/LocalTerminal.vue";
+import MarkdownIt from 'markdown-it';
 
 export default {
     name: "TerminalPage",
@@ -6,6 +7,27 @@ export default {
     data() {
         return {
             showEditor: false,
+            markdownContent: `
+## 支持命令
+1. 查看当前所有协程状态(\`ps\`)
+2. 窥视协程(\`co id\`)
+3. 进入协程(\`attach id\`)
+4. 查看调用栈(\`bt\`)
+5. 查栈帧(\`f index\`)
+6. 打断点(\`b\`)
+7. 单步调试(\`n\`)
+8. 恢复运行(\`c\`)
+9. 查看更多源码(\`l\`)
+10. 打印变量(\`p $var\`)
+11. 修改变量(\`p $var =x\`)
+12. 执行命令(\`p command0\`)
+13. 查看变量(\`vars\`)
+14. 扫描僵尸协程(\`z 时间\`)
+15. 杀死协程(\`kill id\`)
+16. 杀死所有协程(\`killall\`)  
+17. 查看配置(\`config\`)          
+18. 查看路由(\`route\`)
+        `,
             terminals: {
                 default: {
                     show: false,
@@ -31,6 +53,13 @@ export default {
     },
     props: {
         initCmd: String
+    },
+    computed: {
+        // 使用 markdown-it 来解析 Markdown 内容
+        renderedMarkdown() {
+            const md = new MarkdownIt();
+            return md.render(this.markdownContent);
+        },
     },
     mounted() {
         let defaultTerminal

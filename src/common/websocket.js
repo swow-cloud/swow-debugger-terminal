@@ -7,8 +7,23 @@ let timeout = 20 * 1000; //20秒一次心跳
 let timeoutObj = null; //心跳心跳倒计时
 let serverTimeoutObj = null; //心跳倒计时
 let timeoutnum = null;
-let global_callback = null;
 let weburl = "";
+let global_callback = function (data) {
+    if (data === 'pong') {
+        Notification.success(
+            {
+                title: 'SDB🚀',
+                message: `${data}`
+            }
+        )
+    } else {
+        TerminalApi.pushMessage('SDB', {
+            type: 'ansi',
+            content: `${data}`
+        })
+    }
+
+};
 
 export const sendWebsocket = function (agentData, callback) {
     global_callback = callback;
@@ -137,12 +152,6 @@ function socketOnMessage() {
     socket.onmessage = (e) => {
         global_callback(e.data);
         reset();
-        global_callback = function (data) {
-            TerminalApi.pushMessage('SDB', {
-                type: 'ansi',
-                content: `${data}`
-            })
-        }
     };
 }
 
