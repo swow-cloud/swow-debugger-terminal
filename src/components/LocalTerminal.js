@@ -177,8 +177,11 @@ export default {
             else if (key === 'pool') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'table',
+                        content: {
+                            head: ['pool', 'poolName', 'currentConnections', 'connectionsInChannel'],
+                            rows: JSON.parse(data)
+                        }
                     })
                 })
             }
@@ -189,6 +192,26 @@ export default {
                         content: {
                             head: ['server', 'method', 'uri', 'action','middleware'],
                             rows: JSON.parse(data)
+                        }
+                    })
+                })
+            }
+            else if (key === 'crontab') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'table',
+                        content: {
+                          head:['name' ,
+                          'rule',
+                          'nextRunTime',
+                          'callback',
+                          'enable',
+                          'memo' ,
+                          'options' ,
+                          'environments' ,
+                          'timezone' 
+                      ],
+                      rows:JSON.parse(data)
                         }
                     })
                 })

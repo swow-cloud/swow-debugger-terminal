@@ -3,31 +3,31 @@ export const commands = [
     {
         "key": "ps",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'ps',
         "description": "查看当前所有协程状态"
     },
     {
         "key": "attach",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'attach',
         "description": "进入协程"
     },
     {
         "key": "exec",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'exec',
         "description": "执行命令"
     },
     {
         "key": "vars",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'vars',
         "description": "查看变量"
     },
     {
         "key": "bt",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'bt',
         "description": "查看调用栈"
     },
     {
@@ -45,19 +45,7 @@ export const commands = [
     {
         "key": "n",
         "group": "demo",
-        "usage": 'info',
-        "description": "单步调试"
-    },
-    {
-        "key": "n",
-        "group": "demo",
-        "usage": 'info',
-        "description": "单步调试"
-    },
-    {
-        "key": "n",
-        "group": "demo",
-        "usage": 'info',
+        "usage": 'n',
         "description": "单步调试"
     },
     {
@@ -69,32 +57,38 @@ export const commands = [
     {
         "key": "kill",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'kill',
         "description": "杀死协程"
     },
     {
         "key": "killall",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'killall',
         "description": "杀死所有协程"
     },
     {
         "key": "pool",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'pool',
         "description": "查看mysql,redis连接池"
     },
     {
         "key": "config",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'config',
         "description": "查看线上配置信息"
     },
     {
         "key": "route",
         "group": "demo",
-        "usage": 'info',
+        "usage": 'route',
         "description": "查看路由"
+    },
+    {
+        "key": "crontab",
+        "group": "demo",
+        "usage": 'crontab',
+        "description": "查看定时任务"
     },
     {
         "key": "fail",
