@@ -8,7 +8,7 @@ let timeoutObj = null; //心跳心跳倒计时
 let serverTimeoutObj = null; //心跳倒计时
 let timeoutnum = null;
 let weburl = "";
-let global_callback = function (data) {
+let defaultGlobalCallback = function (data) {
     if (data === 'pong') {
         Notification.success(
             {
@@ -24,6 +24,7 @@ let global_callback = function (data) {
     }
 
 };
+let global_callback = defaultGlobalCallback
 
 export const sendWebsocket = function (agentData, callback) {
     global_callback = callback;
@@ -80,6 +81,8 @@ function reset() {
     //清除时间
     clearTimeout(timeoutObj);
     clearTimeout(serverTimeoutObj);
+    //重置global_callback
+    global_callback = defaultGlobalCallback
     //重启心跳
     start();
 }
