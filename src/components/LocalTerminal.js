@@ -2,6 +2,7 @@ import {api as TerminalApi, Ask as TerminalAsk, Flash as TerminalFlash, Terminal
 import {exampleCode} from "@/demo/Demo";
 import {commands} from "@/components/LocalTerminalData";
 import {initWebSocket, sendWebsocket} from "@/common/websocket"
+// import {parseAnsiTableToJsArray} from "@/common/util"
 
 export default {
     name: 'LocalTerminal',
@@ -98,8 +99,11 @@ export default {
             if (key === 'ps') {
                 sendWebsocket('ps', function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'table',
+                        content: {
+                            head: ['id', 'state', 'switches', 'elapsed','executing','source_position'],
+                            rows: JSON.parse(data)
+                        }
                     })
                 })
             } else if (key === 'attach') {
@@ -139,6 +143,14 @@ export default {
                 })
             } else if (key === 'l') {
                 sendWebsocket('l', function (data) {
+                    success({
+                        type: 'ansi',
+                        content: data
+                    })
+                })
+            }
+            else if (key === 'list') {
+                sendWebsocket(command, function (data) {
                     success({
                         type: 'ansi',
                         content: data
@@ -315,7 +327,7 @@ export default {
                     type: 'json',
                     content: JSON.stringify(info)
                 })
-            } else if (key === 'list') {
+            } else if (key === 'list1') {
                 let allClass = ['success', 'error', 'system', 'info', 'warning'];
                 allClass.forEach(clazz => {
                     console.log(clazz, this.name)

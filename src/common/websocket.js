@@ -1,5 +1,6 @@
 import {api as TerminalApi} from "vue-web-terminal";
 import {Notification} from 'element-ui';
+// import {parseAnsiTableToJsArray} from "@/common/util"
 
 let socket = "";
 let lockReconnect = false; //是否真正建立连接
@@ -16,7 +17,20 @@ let defaultGlobalCallback = function (data) {
                 message: `${data}`
             }
         )
+    }  else if (data[0] === '{'){
+        TerminalApi.pushMessage('SDB', {
+            type: 'json',
+            content: `${data}`
+        })
     } else {
+        // const result= parseAnsiTableToJsArray(data)
+        // TerminalApi.pushMessage('SDB', {
+        //     type: 'table',
+        //     content: {
+        //         head: result.headers,
+        //         rows: result.data
+        //     }
+        // })
         TerminalApi.pushMessage('SDB', {
             type: 'ansi',
             content: `${data}`

@@ -13,6 +13,12 @@ body {
   animation: 10s movement linear infinite;
 }
 
+.t-header{
+  text-align: center;
+  padding: 2px;
+  background-color: #28a29f;
+}
+
 body::after {
   /* content: ""; */
   display: block;

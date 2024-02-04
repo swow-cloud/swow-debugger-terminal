@@ -6,7 +6,7 @@ export default {
     components: {LocalTerminal},
     data() {
         return {
-            showEditor: false,
+            showEditor: true,
             markdownContent: `
 ## 支持命令
 1. 查看当前所有协程状态(\`ps\`)

@@ -166,7 +166,7 @@ export const commands = [
         "key": "list",
         "group": "demo",
         "usage": 'list',
-        "description": "列出所有级别消息"
+        "description": "查看更多源码"
     },
     {
         "key": "flash",
