@@ -32,8 +32,8 @@ let defaultGlobalCallback = function (data) {
         //     }
         // })
         TerminalApi.pushMessage('SDB', {
-            type: 'ansi',
-            content: `${data}`
+            type: 'html',
+            content: `<pre>${data}</pre>`
         })
     }
 

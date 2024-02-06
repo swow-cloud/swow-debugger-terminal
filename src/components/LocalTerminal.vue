@@ -43,6 +43,14 @@ export default LocalTerminalJs
 </script>
 
 <style>
+
+.t-container {
+  width: 65% !important;
+  height: 800px !important;
+  left: 50px !important;
+  top: 20px !important;
+}
+
 .custom-content {
   list-style: none;
   margin: 0;

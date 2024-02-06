@@ -69,7 +69,7 @@
 
           <!-- 底部信息 -->
           <el-footer>
-            底部信息如版权声明归swow-cloud所有
+            底部信息如版权声明归@swow-cloud所有
           </el-footer>
         </el-container>
       </div>
@@ -109,9 +109,8 @@ export default TerminalPageJs;
 }
 
 .editor-container {
-  width: 500px;
-  //display: flex;
-  //align-items: center;
+  display: flex;
+  align-items: center;
   justify-content: center;
   overflow: auto;
 }

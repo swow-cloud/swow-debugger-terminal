@@ -111,82 +111,79 @@ SDB (Swow Debugger)
             if (key === 'ps') {
                 sendWebsocket('ps', function (data) {
                     success({
-                        type: 'table',
-                        content: {
-                            head: ['id', 'state', 'switches', 'elapsed','executing','source_position'],
-                            rows: JSON.parse(data)
-                        }
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'attach') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'vars') {
                 sendWebsocket('vars', function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'exec') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'co') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'bt') {
                 sendWebsocket('bt', function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'l') {
                 sendWebsocket('l', function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             }
             else if (key === 'list') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'p') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'z') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'kill') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'ansi',
-                        content: data
+                        type: 'html',
+                        content: `<pre>${data}</pre>`
                     })
                 })
             } else if (key === 'config') {
