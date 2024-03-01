@@ -45,10 +45,7 @@ export default LocalTerminalJs
 <style>
 
 .t-container {
-  width: 65% !important;
-  height: 800px !important;
-  left: 50px !important;
-  top: 20px !important;
+  top: 10px !important;
 }
 
 .custom-content {
