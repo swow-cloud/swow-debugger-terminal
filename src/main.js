@@ -1,10 +1,20 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Terminal from 'vue-web-terminal'
+import NotificationComponent from '@/components/NotificationComponent.vue';
+
+Vue.prototype.$notify = function(options) {
+    const NotificationConstructor = Vue.extend(NotificationComponent);
+    const instance = new NotificationConstructor({
+        propsData: options,
+    }).$mount();
+
+    document.body.appendChild(instance.$el);
+};
 
 import VueCodemirror from 'vue-codemirror'
-import {Notification,Container,Header,Footer,Main,Row,Col} from "element-ui";
-
+import {Col, Container, Footer, Header, Main, Row} from "element-ui";
+// 全局注册通知组件
 Vue.use(VueCodemirror)
 Vue.use(Container)
 Vue.use(Header)
@@ -23,7 +33,7 @@ Vue.use(Terminal, {
     }
 })
 Vue.config.productionTip = false
-Vue.prototype.$notify = Notification;
-new Vue({
+const app = new Vue({
     render: h => h(App),
 }).$mount('#app')
+window.app = app;

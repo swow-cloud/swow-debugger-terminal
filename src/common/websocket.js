@@ -1,6 +1,6 @@
 import {api as TerminalApi} from "vue-web-terminal";
 import {Notification} from 'element-ui';
-// import {parseAnsiTableToJsArray} from "@/common/util"
+import {isEmpty} from "@/common/util";
 
 let socket = "";
 let lockReconnect = false; //是否真正建立连接
@@ -11,30 +11,28 @@ let timeoutnum = null;
 let weburl = "";
 let defaultGlobalCallback = function (data) {
     if (data === 'pong') {
-        Notification.success(
-            {
-                title: 'SDB🚀',
-                message: `${data}`
-            }
-        )
-    }  else if (data[0] === '{'){
+        window.app.$notify({
+            message: `${data}`,
+            type: 'success', // other types: 'info', 'warning', 'error'
+            duration: 4000, // custom duration in milliseconds
+        });
+    } else if (data[0] === '{') {
         TerminalApi.pushMessage('SDB', {
             type: 'json',
             content: `${data}`
         })
     } else {
-        // const result= parseAnsiTableToJsArray(data)
-        // TerminalApi.pushMessage('SDB', {
-        //     type: 'table',
-        //     content: {
-        //         head: result.headers,
-        //         rows: result.data
-        //     }
-        // })
-        TerminalApi.pushMessage('SDB', {
-            type: 'html',
-            content: `<pre>${data}</pre>`
-        })
+        if (!isEmpty(data)) {
+            window.app.$notify({
+                message: `${data}`,
+                type: 'success', // other types: 'info', 'warning', 'error'
+                duration: 4000, // custom duration in milliseconds
+            });
+            TerminalApi.pushMessage('SDB', {
+                type: 'html',
+                content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
+            })
+        }
     }
 
 };

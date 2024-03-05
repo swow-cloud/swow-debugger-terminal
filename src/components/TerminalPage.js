@@ -27,7 +27,8 @@ export default {
 16. 杀死所有协程(\`killall\`)  
 17. 查看配置(\`config\`)          
 18. 查看路由(\`route\`)
-18. 查看定时任务(\`crontab\`)
+19. 查看定时任务(\`crontab\`)
+20. 查看代理类(\`cacheable\`)
         `,
             terminals: {
                 default: {

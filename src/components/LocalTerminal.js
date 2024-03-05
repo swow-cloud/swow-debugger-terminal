@@ -112,49 +112,49 @@ SDB (Swow Debugger)
                 sendWebsocket('ps', function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'attach') {
                 sendWebsocket(command, function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'vars') {
                 sendWebsocket('vars', function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'exec') {
                 sendWebsocket(command, function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'co') {
                 sendWebsocket(command, function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'bt') {
                 sendWebsocket('bt', function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'l') {
                 sendWebsocket('l', function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             }
@@ -162,28 +162,28 @@ SDB (Swow Debugger)
                 sendWebsocket(command, function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'p') {
                 sendWebsocket(command, function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'z') {
                 sendWebsocket(command, function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'kill') {
                 sendWebsocket(command, function (data) {
                     success({
                         type: 'html',
-                        content: `<pre>${data}</pre>`
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             } else if (key === 'config') {
@@ -295,6 +295,13 @@ SDB (Swow Debugger)
                                 <p>⭐️Github: <a class='t-a' target='_blank' href='https://github.com/tzfun/vue-web-terminal'>https://github.com/tzfun/vue-web-terminal</a></p>
                             </div>
                             `
+                })
+            } else if (key === 'cacheable') {
+                sendWebsocket(command, function (data) {
+                    success({
+                        type: 'json',
+                        content:JSON.parse(data)
+                    })
                 })
             } else if (key === 'ls') {
                 success({

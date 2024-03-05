@@ -91,6 +91,12 @@ export const commands = [
         "description": "查看定时任务"
     },
     {
+        "key": "cacheable",
+        "group": "demo",
+        "usage": 'cacheable',
+        "description": "查看Hyperf代理类"
+    },
+    {
         "key": "fail",
         "group": "demo",
         "usage": 'fail',

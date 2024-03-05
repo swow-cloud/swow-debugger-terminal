@@ -1,5 +1,12 @@
 <template>
   <div class="terminal-container">
+<!--    <div class="dropdown dropdown-hover">-->
+<!--      <div tabindex="0"  class="btn m-1">Themes</div>-->
+<!--      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">-->
+<!--        <li><a>Item 1</a></li>-->
+<!--        <li><a>Item 2</a></li>-->
+<!--      </ul>-->
+<!--    </div>-->
     <div class="window-container">
       <div v-for="(item,key) in terminals" :key="key">
         <div v-if="key === 'default' && item.show">
@@ -53,36 +60,75 @@
         <!--          </ul>-->
         <!--        </div>-->
 
-        <el-container>
-          <!-- 顶部导航 -->
-          <el-header style="height: 100%">
-            <img style="width: 250px" :src="require('@/../public/logo.png')" alt="SDB">
-          </el-header>
+        <!--        <el-container>-->
+        <!--          &lt;!&ndash; 顶部导航 &ndash;&gt;-->
+        <!--          <el-header style="height: 100%">-->
+        <!--            <img style="width: 250px" :src="require('@/../public/logo.png')" alt="SDB">-->
+        <!--          </el-header>-->
 
-          <!-- 页面主体 -->
-          <el-container>
-            <!-- 主内容区与侧边栏区域 -->
-            <el-main>
-              <div v-html="renderedMarkdown"></div>
-            </el-main>
-          </el-container>
+        <!--          &lt;!&ndash; 页面主体 &ndash;&gt;-->
+        <!--          <el-container>-->
+        <!--            &lt;!&ndash; 主内容区与侧边栏区域 &ndash;&gt;-->
+        <!--            <el-main>-->
+        <!--              <div v-html="renderedMarkdown"></div>-->
+        <!--            </el-main>-->
+        <!--          </el-container>-->
 
-          <!-- 底部信息 -->
-          <el-footer>
-            底部信息如版权声明归@swow-cloud所有
-          </el-footer>
-        </el-container>
+        <!--          &lt;!&ndash; 底部信息 &ndash;&gt;-->
+        <!--          <el-footer>-->
+        <!--            底部信息如版权声明归@swow-cloud所有-->
+        <!--          </el-footer>-->
+        <!--        </el-container>-->
+        <nav class="navbar justify-center bg-base-300">
+          <a class="btn btn-ghost text-lg">
+            <img alt="SDB" :src="require('@/../public/logo.png')" class="w-4"/>
+            功能列表
+          </a>
+        </nav>
+
+        <nav class="flex justify-center bg-base-200">
+          <ul class="menu menu-horizontal justify-center">
+            <li>
+              <a>
+                <i class="fa-solid fa-shop text-secondary"></i>
+                Shop
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="fa-solid fa-book-open text-secondary"></i>
+                Catalog
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="fa-solid fa-newspaper text-secondary"></i>
+                News
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="fa-solid fa-rss text-secondary"></i>
+                Blog
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="fa-solid fa-users text-secondary"></i>
+                Team
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
     </div>
-
   </div>
 </template>
 
 <script>
 
 import TerminalPageJs from "@/components/TerminalPage.js";
-
 
 export default TerminalPageJs;
 
