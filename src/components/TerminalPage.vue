@@ -1,12 +1,12 @@
 <template>
   <div class="terminal-container">
-<!--    <div class="dropdown dropdown-hover">-->
-<!--      <div tabindex="0"  class="btn m-1">Themes</div>-->
-<!--      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">-->
-<!--        <li><a>Item 1</a></li>-->
-<!--        <li><a>Item 2</a></li>-->
-<!--      </ul>-->
-<!--    </div>-->
+    <!--    <div class="dropdown dropdown-hover">-->
+    <!--      <div tabindex="0"  class="btn m-1">Themes</div>-->
+    <!--      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">-->
+    <!--        <li><a>Item 1</a></li>-->
+    <!--        <li><a>Item 2</a></li>-->
+    <!--      </ul>-->
+    <!--    </div>-->
     <div class="window-container">
       <div v-for="(item,key) in terminals" :key="key">
         <div v-if="key === 'default' && item.show">
@@ -36,49 +36,6 @@
     </div>
     <div class="editor-container" v-if="showEditor">
       <div class="editor-body">
-
-        <!--        <div class="demo-btn">-->
-        <!--          <button :class="'btn ' + (terminals.default.show ? 'active' :'btn-default')"-->
-        <!--                  @click="showDemo('default')">默认显示-->
-        <!--          </button>-->
-        <!--        </div>-->
-        <!--        <div class="demo-btn">-->
-        <!--          <button :class="'btn ' + (terminals.list.length > 0 ? 'active' :'btn-default')"-->
-        <!--                  @click="showDemo('list')">多窗口示例（多次戳我）-->
-        <!--          </button>-->
-        <!--        </div>-->
-
-        <!--        <div class="help-container">-->
-        <!--          <h2 class="help-title">使用小技巧</h2>-->
-        <!--          <ul class="help-list">-->
-        <!--            <li>拖动窗口Header可以拖拽</li>-->
-        <!--            <li>双击窗口Header可以全屏</li>-->
-        <!--            <li>选中内容右键可以复制到剪切板</li>-->
-        <!--            <li>输入时右键可以粘贴剪切板内容</li>-->
-        <!--            <li>双击窗口可以强制获取焦点</li>-->
-        <!--            <li>拖拽窗口四个角可以缩放大小</li>-->
-        <!--          </ul>-->
-        <!--        </div>-->
-
-        <!--        <el-container>-->
-        <!--          &lt;!&ndash; 顶部导航 &ndash;&gt;-->
-        <!--          <el-header style="height: 100%">-->
-        <!--            <img style="width: 250px" :src="require('@/../public/logo.png')" alt="SDB">-->
-        <!--          </el-header>-->
-
-        <!--          &lt;!&ndash; 页面主体 &ndash;&gt;-->
-        <!--          <el-container>-->
-        <!--            &lt;!&ndash; 主内容区与侧边栏区域 &ndash;&gt;-->
-        <!--            <el-main>-->
-        <!--              <div v-html="renderedMarkdown"></div>-->
-        <!--            </el-main>-->
-        <!--          </el-container>-->
-
-        <!--          &lt;!&ndash; 底部信息 &ndash;&gt;-->
-        <!--          <el-footer>-->
-        <!--            底部信息如版权声明归@swow-cloud所有-->
-        <!--          </el-footer>-->
-        <!--        </el-container>-->
         <nav class="navbar justify-center bg-base-300">
           <a class="btn btn-ghost text-lg">
             <img alt="SDB" :src="require('@/../public/logo.png')" class="w-4"/>
@@ -212,5 +169,25 @@ export default TerminalPageJs;
 .active {
   background-color: #70d095;
   color: white;
+}
+
+.t-header-container ul {
+  display: flex;
+}
+
+.t-shell-dots-red {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.t-shell-dots-yellow {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.t-shell-dots-green {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 </style>

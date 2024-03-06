@@ -1,5 +1,4 @@
 import {api as TerminalApi} from "vue-web-terminal";
-import {Notification} from 'element-ui';
 import {isEmpty} from "@/common/util";
 
 let socket = "";
@@ -23,11 +22,6 @@ let defaultGlobalCallback = function (data) {
         })
     } else {
         if (!isEmpty(data)) {
-            window.app.$notify({
-                message: `${data}`,
-                type: 'success', // other types: 'info', 'warning', 'error'
-                duration: 4000, // custom duration in milliseconds
-            });
             TerminalApi.pushMessage('SDB', {
                 type: 'html',
                 content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
@@ -123,12 +117,12 @@ function start() {
 function socketOnOpen() {
     socket.onopen = () => {
         console.log("socket连接成功");
-        Notification.success(
-            {
-                title: 'SDB🚀',
-                message: "服务端连接成功..."
-            }
-        )
+        window.app.$notify({
+            message: '服务端连接成功...',
+            type: 'success',
+            duration: 4000,
+            title: "SDB🚀"
+        });
         start();
     };
 }
@@ -136,12 +130,12 @@ function socketOnOpen() {
 function socketOnClose() {
     socket.onclose = () => {
         console.log("socket已经关闭");
-        Notification.error(
-            {
-                title: 'SDB🚀',
-                message: "服务端已断开..."
-            }
-        )
+        window.app.$notify({
+            message: "服务端连接已断开...",
+            type: 'error',
+            duration: 4000,
+            title: "SDB🚀"
+        });
     };
 }
 
@@ -153,12 +147,12 @@ function socketOnSend(data) {
 function socketOnError() {
     socket.onerror = () => {
         reconnect();
-        Notification.error(
-            {
-                title: 'SDB🚀',
-                message: "服务端连接失败..."
-            }
-        )
+        window.app.$notify({
+            message: "服务端连接失败...",
+            type: 'error',
+            duration: 4000,
+            title: "SDB🚀"
+        });
         console.log("socket 链接失败");
     };
 }
@@ -172,11 +166,11 @@ function socketOnMessage() {
 
 export function socketState() {
     if (socket.readyState === 3 || socket.readyState === 2) {
-        Notification.error(
-            {
-                title: 'SDB🚀',
-                message: "服务端连接已断开..."
-            }
-        )
+        window.app.$notify({
+            message: "服务端连接已断开...",
+            type: 'error',
+            duration: 4000,
+            title: "SDB🚀"
+        });
     }
 }

@@ -2,6 +2,7 @@ import {api as TerminalApi, Ask as TerminalAsk, Flash as TerminalFlash, Terminal
 import {exampleCode} from "@/demo/Demo";
 import {commands} from "@/components/LocalTerminalData";
 import {initWebSocket, sendWebsocket} from "@/common/websocket"
+import $ from "jquery";
 // import {parseAnsiTableToJsArray} from "@/common/util"
 
 export default {
@@ -31,6 +32,11 @@ export default {
                 scrollbarStyle: "null"
             }
         }
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            $('.t-window').addClass('bg-gradient-to-r from-slate-900 to-slate-700 h-64 w-full');
+        })
     },
     props: {
         name: String,
@@ -189,9 +195,9 @@ SDB (Swow Debugger)
             } else if (key === 'config') {
                 sendWebsocket(command, function (data) {
                     success({
-                        type: 'json',
+                        type: 'html',
                         class: 'success',
-                        content: JSON.parse(data)
+                        content: `<div class="mockup-code bg-success text-success-content"><pre><code>${data}</code></pre></div>`
                     })
                 })
             }
