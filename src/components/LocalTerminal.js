@@ -36,6 +36,7 @@ export default {
     mounted: function () {
         this.$nextTick(function () {
             $('.t-window').addClass('bg-gradient-to-r from-slate-900 to-slate-700 h-64 w-full');
+            $('.t-header').addClass('bg-gradient-to-r from-indigo-500 ');
         })
     },
     props: {

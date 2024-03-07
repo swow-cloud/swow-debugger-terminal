@@ -47,9 +47,10 @@
           <ul class="menu menu-horizontal justify-center">
             <li>
               <a>
-                <i class="fa-solid fa-shop text-secondary"></i>
-                Shop
+                <i class="fa-solid fa-file-contract text-secondary"></i>
+                文档
               </a>
+<!--              <pre> {{renderedMarkdown}}</pre>-->
             </li>
             <li>
               <a>
