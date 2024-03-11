@@ -16,6 +16,7 @@ export default {
             },
             cmdStore: [],
             initLog: null,
+            //todo 2024-03-11 需要去掉引导
             guide: {
                 step: 0,
                 command: null
