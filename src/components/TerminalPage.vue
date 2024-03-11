@@ -36,48 +36,30 @@
     </div>
     <div class="editor-container" v-if="showEditor">
       <div class="editor-body">
-        <nav class="navbar justify-center bg-base-300">
-          <a class="btn btn-ghost text-lg">
-            <img alt="SDB" :src="require('@/../public/logo.png')" class="w-4"/>
-            功能列表
-          </a>
-        </nav>
-
-        <nav class="flex justify-center bg-base-200">
+        <nav class="flex justify-center bg-base-200" style="border-radius: 10px">
+          <img alt="SDB" :src="require('@/../public/logo.png')" class="w-20"/>
           <ul class="menu menu-horizontal justify-center">
             <li>
-              <a>
+              <a @click="renderedMarkdown">
                 <i class="fa-solid fa-file-contract text-secondary"></i>
                 文档
               </a>
-<!--              <pre> {{renderedMarkdown}}</pre>-->
             </li>
             <li>
               <a>
                 <i class="fa-solid fa-book-open text-secondary"></i>
-                Catalog
+                CatLog
               </a>
             </li>
             <li>
               <a>
                 <i class="fa-solid fa-newspaper text-secondary"></i>
-                News
-              </a>
-            </li>
-            <li>
-              <a>
-                <i class="fa-solid fa-rss text-secondary"></i>
-                Blog
-              </a>
-            </li>
-            <li>
-              <a>
-                <i class="fa-solid fa-users text-secondary"></i>
-                Team
+                服务状态
               </a>
             </li>
           </ul>
         </nav>
+        <div class="markdown-content" v-html="renderedMarkdownContent"></div>
       </div>
 
     </div>
@@ -113,7 +95,7 @@ export default TerminalPageJs;
 }
 
 .editor-container {
-  display: flex;
+  margin-top: 10px;
   align-items: center;
   justify-content: center;
   overflow: auto;
@@ -181,14 +163,27 @@ export default TerminalPageJs;
   justify-content: center !important;
   align-items: center !important;
 }
+
 .t-shell-dots-yellow {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
 }
+
 .t-shell-dots-green {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+}
+
+.markdown-content {
+  margin-top: 1em; /* Add some space between the navbar and the content */
+  max-width: 800px; /* Set a max-width to keep the content readable */
+  margin-left: auto; /* Center the container */
+  margin-right: auto; /* Center the container */
+  padding: 1em; /* Add some padding inside the container */
+  background-color: #fff; /* Optionally set a background color */
+  border-radius: 8px; /* Optionally round corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionally add a subtle shadow */
 }
 </style>
