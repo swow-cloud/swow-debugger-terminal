@@ -9,6 +9,7 @@ export default {
             showEditor: true,
             rawMarkdown: '', // The raw Markdown content that you want to display
             renderedMarkdownContent: '', // The rendered HTML from Markdown,
+            showServiceStatus: false,  // 新增状态变量
             terminals: {
                 default: {
                     show: false,
@@ -49,29 +50,13 @@ export default {
         defaultTerminal.localInitCmd = this.initCmd
         defaultTerminal.dragConf = this.initWindowSize()
         defaultTerminal.show = true
-        this.rawMarkdown = "支持命令: \n" +
-            "1. 查看当前所有协程状态(`ps`)\n" +
-            "2. 窥视协程(`co id`)\n" +
-            "3. 进入协程(`attach id`)\n" +
-            "4. 查看调用栈(`bt`)\n" +
-            "5. 查栈帧(`f index`)\n" +
-            "6. 打断点(`b`)\n" +
-            "7. 单步调试(`n`)\n" +
-            "8. 恢复运行(`c`)\n" +
-            "9. 查看更多源码(`l`)\n" +
-            "10. 打印变量(`p $var`)\n" +
-            "11. 修改变量(`p $var =x`)\n" +
-            "12. 执行命令(`p command0`)\n" +
-            "13. 查看变量(`vars`)\n" +
-            "14. 扫描僵尸协程(`z 时间`)\n" +
-            "15. 杀死协程(`kill id`)\n" +
-            "16. 杀死所有协程(`killall`)  \n" +
-            "17. 查看配置(`config`)          \n" +
-            "18. 查看路由(`route`)\n" +
-            "19. 查看定时任务(`crontab`)\n" +
-            "20. 查看代理类(`cacheable`)";
+        this.renderedMarkdown()
     },
     methods: {
+        toggleServiceStatus() {
+            this.showServiceStatus = !this.showServiceStatus; // 切换状态
+            this.rawMarkdown = ''
+        },
         initWindowSize() {
             let dragConf = {
                 pinned: false
@@ -109,6 +94,27 @@ export default {
         },
         // 使用 markdown-it 来解析 Markdown 内容
         renderedMarkdown() {
+            this.rawMarkdown = "支持命令: \n" +
+                "1. 查看当前所有协程状态(`ps`)\n" +
+                "2. 窥视协程(`co id`)\n" +
+                "3. 进入协程(`attach id`)\n" +
+                "4. 查看调用栈(`bt`)\n" +
+                "5. 查栈帧(`f index`)\n" +
+                "6. 打断点(`b`)\n" +
+                "7. 单步调试(`n`)\n" +
+                "8. 恢复运行(`c`)\n" +
+                "9. 查看更多源码(`l`)\n" +
+                "10. 打印变量(`p $var`)\n" +
+                "11. 修改变量(`p $var =x`)\n" +
+                "12. 执行命令(`p command0`)\n" +
+                "13. 查看变量(`vars`)\n" +
+                "14. 扫描僵尸协程(`z 时间`)\n" +
+                "15. 杀死协程(`kill id`)\n" +
+                "16. 杀死所有协程(`killall`)  \n" +
+                "17. 查看配置(`config`)          \n" +
+                "18. 查看路由(`route`)\n" +
+                "19. 查看定时任务(`crontab`)\n" +
+                "20. 查看代理类(`cacheable`)";
             const md = new MarkdownIt();
             this.renderedMarkdownContent =  md.render(this.rawMarkdown);
         },

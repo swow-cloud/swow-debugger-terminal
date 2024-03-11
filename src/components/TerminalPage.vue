@@ -52,14 +52,14 @@
               </a>
             </li>
             <li>
-              <a>
-                <i class="fa-solid fa-newspaper text-secondary"></i>
+              <a @click="toggleServiceStatus">
+                <i class="fa-solid fa-globe text-secondary"></i>
                 服务状态
               </a>
             </li>
           </ul>
         </nav>
-        <div class="markdown-content" v-html="renderedMarkdownContent"></div>
+        <div v-if="rawMarkdown" class="markdown-content" v-html="renderedMarkdownContent"></div>
       </div>
 
     </div>
@@ -99,6 +99,7 @@ export default TerminalPageJs;
   align-items: center;
   justify-content: center;
   overflow: auto;
+  flex: 0 0 500px;
 }
 
 .demo-btn {
@@ -185,5 +186,48 @@ export default TerminalPageJs;
   background-color: #fff; /* Optionally set a background color */
   border-radius: 8px; /* Optionally round corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionally add a subtle shadow */
+}
+
+.stats {
+  padding: 1rem; /* 添加一些内边距 */
+}
+
+.stat {
+  margin-bottom: 1rem; /* 添加一些间隙 */
+  padding: 1rem; /* 内边距让内容不要贴边 */
+  border: 1px solid #ffffff; /* 白色边框 */
+  border-radius: 0.5rem; /* 圆角边框 */
+  background-color: #2c3e50; /* 暗色背景 */
+}
+
+.stat-title {
+  font-size: 1rem; /* 调整标题字体大小 */
+  margin-bottom: 0.5rem; /* 在标题和值之间添加空间 */
+}
+
+.stat-value {
+  font-size: 1.5rem; /* 调整数值的字体大小 */
+  font-weight: 700; /* 字体加粗 */
+  margin-bottom: 0.5rem; /* 在值和动作之间添加空间 */
+}
+
+.stat-actions {
+  text-align: right; /* 按钮向右对齐 */
+}
+
+.btn {
+  margin-left: 0.5rem; /* 按钮之间添加些间隔 */
+}
+
+.btn-success {
+  background-color: #28a745; /* 绿色背景 */
+  color: #ffffff; /* 白色文字 */
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem; /* 缩小按钮的填充 */
+  font-size: 0.875rem; /* 缩小按钮文字大小 */
+  line-height: 1.5; /* 行高 */
+  border-radius: 0.2rem; /* 圆角 */
 }
 </style>
