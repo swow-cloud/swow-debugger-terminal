@@ -3,7 +3,7 @@ import LoginPage from "@/components/Login.vue";
 import {getQuery} from "@/common/util";
 
 import 'vue-web-terminal/lib/theme/dark.css'
-import 'element-ui/lib/theme-chalk/index.css';
+import 'element-plus/dist/index.css';
 
 
 export default {

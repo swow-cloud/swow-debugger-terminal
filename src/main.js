@@ -13,7 +13,7 @@ Vue.prototype.$notify = function(options) {
 };
 
 import VueCodemirror from 'vue-codemirror'
-import {Col, Container, Footer, Header, Main, Row} from "element-ui";
+import {Col, Container, Footer, Header, Main, Row} from "element-plus";
 // 全局注册通知组件
 Vue.use(VueCodemirror)
 Vue.use(Container)
