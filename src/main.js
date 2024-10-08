@@ -1,16 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Terminal from 'vue-web-terminal'
-import NotificationComponent from '@/components/NotificationComponent.vue';
-
-Vue.prototype.$notify = function(options) {
-    const NotificationConstructor = Vue.extend(NotificationComponent);
-    const instance = new NotificationConstructor({
-        propsData: options,
-    }).$mount();
-
-    document.body.appendChild(instance.$el);
-};
 
 import VueCodemirror from 'vue-codemirror'
 import {Col, Container, Footer, Header, Main, Row} from "element-plus";
